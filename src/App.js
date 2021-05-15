@@ -1,15 +1,13 @@
+import ToDoItem from "./ToDoItem"
+import "./style.css"
+
 function App()
 {
     return(
-        <div>
-            <input type="checkbox"></input>
-            <p>text 1</p>
-
-            <input type="checkbox"></input>
-            <p>text 2</p>
-
-            <input type="checkbox"></input>
-            <p>text 3</p>
+        <div className ="todo-list">
+            <ToDoItem />
+            <ToDoItem />
+            <ToDoItem />
         </div>
     )
 }
