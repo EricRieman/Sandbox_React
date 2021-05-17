@@ -10,15 +10,13 @@ body {
 
     background-color: #333;
     color: whitesmoke;
-
-
 }
 
 .joke2 {
-    text-align: end;
+    text-align: right;
     display: flex;
-    justify-content: end;
-    align-items: end;
+    justify-content: right;
+    align-items: right;
 
     background-color: #123;
     color: whitesmoke;

@@ -11,6 +11,9 @@ function App() {
             <Joke
                 question = "whats up2"
                 punchLine = "Hello" />
+
+            <Joke
+                punchLine = "Hello" />
         </div>
     )
 }
