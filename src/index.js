@@ -1,4 +1,6 @@
-// props allow us to dynamically change our react components
+// Time to style our todo list
+// change the input/paragraph combo to a new component called ToDoItem, then style that 
+// component however you like, using inline, css, or both
 
 import ReactDOM from "react-dom"
 import App from "./App"

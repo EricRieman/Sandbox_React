@@ -1,10 +1,10 @@
 import "./style.css"
 
-function ToDoItem() {
+function ToDoItem(props) {
     return (
         <div className = "todo-item">
-            <input type="checkbox"></input>
-            <p>text 1</p>
+            <input type="checkbox" checked = {props.todo.completed}></input>
+            <p>{props.todo.text}</p>
         </div>
     )
 }
