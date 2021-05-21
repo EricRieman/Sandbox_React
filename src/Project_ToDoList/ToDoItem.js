@@ -1,9 +1,14 @@
+// add an onChanged event handler for the checkbox
+
 import "./style.css"
 
 function ToDoItem(props) {
     return (
         <div className = "todo-item">
-            <input type="checkbox" checked = {props.todo.completed}></input>
+            <input type="checkbox" 
+                   checked = {props.todo.completed}
+                   onChange = {() => console.log("hello")}>
+            </input>
             <p>{props.todo.text}</p>
         </div>
     )

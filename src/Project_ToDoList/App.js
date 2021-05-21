@@ -1,4 +1,3 @@
-// convert into a class component, load the todoData into a state
 import React from "react"
 
 import ToDoItem from "./ToDoItem"
