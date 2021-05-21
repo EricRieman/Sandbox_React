@@ -1,5 +1,3 @@
-// add an onChanged event handler for the checkbox
-
 import "./style.css"
 
 function ToDoItem(props) {
