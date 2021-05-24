@@ -1,61 +1,152 @@
-// every component we create in react goes though a series of phases during its time alive in the react app.
-// it goes though a series of events as it is being updated
-// lifecylce methods diagram: https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
-// Some of the methods we will use have been deprecated since this tutorial, buy still available
-//   for use if you preclude the method name with UNSAFE_ (until version 17 is released)
+// we can utilize the "event" that gets passed by default to
+// the handler. By naming the element the same as it's data in
+// state, we can use the same handler method, and use the 
+// element's name to use string object names with []
 
 import React from "react"
 
-class App extends React.Component {
+export class App extends React.Component {
     constructor() {
         super();
-        this.state = {}
+        this.state = {
+            firstName: "",
+            lastName: ""
+        }
+        this.handleChange = this.handleChange.bind(this)
     }
 
-    componentDidMount() {
-        // only runs once, after component shows on screen, even with a reRender
-        // common use for this to to get data needed to display correctly
-        console.log("Component mounted")
+    handleChange(event) {
+        this.setState( {
+            [event.target.name]: event.target.value
+        })
     }
-
-    UNSAFE_componentWillReceiveProps(nextProps) {
-        console.log( nextProps )
-        console.log( "Component will recieve props" )
-        // depreicated, but a way to interact/intercept the props before passing them
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log( "Component should update" )
-        // Allows us to return true/false if the componenet should update (re-render).
-        // in some cases, this can be expensive, so here we can apply logic to determine if we should
-
-        return true;
-    }
-
-    componentWillUnmount() {
-        console.log( "Component will unmount" )
-        // the component will eventually end (disappear from screen)
-        // this allows us to clean up or tare down, like to remove an event handler
-    }
-
-    static getDerivedStateFromProps( props, state ) {
-        console.log( "Derive state using props" )
-        // return the new, updated state based using the provided props
-        // you will probably never need to use this, react team is against using it
-        // has the possibility of causing issues
-    }
-
-    getSnapshotBeforeUpdate() {
-        console.log( "Derive state using props" )
-        // Create a backup of the current data
-        // Not a common lifecycle method
-    }
-
+    
     render() {
-        return (
+        return(
             <div>
-                Hello
-            </div>
+                <form>
+                    <input type="text" name="firstName" placeholder="first name" onChange={this.handleChange}/>
+                    <input type="text" name="lastName" placeholder="last name" onChange={this.handleChange}/>
+                    <br />
+                    <h1>{this.state.firstName} {this.state.lastName}</h1>
+                </form>
+           </div>
+        )
+    }
+}
+
+// we can simplify the above code by just applying the state to 
+// the value of the input element. This also makes the element
+// reactive becasue its value is always exactly state.
+// Also, there is a hard to find bug that could come up that
+// we can avoid by savingthe values from event before trying 
+// to setState
+
+export class App2 extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            firstName: "",
+            lastName: "",
+            isFriendly: true,
+            gender: "",
+            favColor: "blue"
+        }
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(event) {
+        const {name, value, type, checked} = event.target
+        type === "checkbox" ? this.setState({[name]: checked})
+                            : this.setState({[name]: value })
+    }
+    
+    render() {
+        return(
+            <div>
+                <form>
+                    <input 
+                        type="text" 
+                        value={this.state.fistName} 
+                        name="firstName" 
+                        placeholder="first name" 
+                        onChange={this.handleChange} />
+                    <input 
+                        type="text" 
+                        value={this.state.lastName } 
+                        name="lastName" placeholder="last name" 
+                        onChange={this.handleChange}/>
+                    <br />
+                    <h1>{this.state.firstName} {this.state.lastName}</h1>
+                
+                    {
+                        // in react, there are major differences to the text area element,
+                        // becasue it behaves more like a text input type
+                    }
+
+                    <textarea 
+                        value={"test"}
+                        onChange={this.handleChange}
+                    />
+
+                    <br />
+                    
+                    <label>
+                        <input 
+                            type = "checkbox"
+                            name="isFriendly"
+                            checked={this.state.isFriendly}
+                            onChange={this.handleChange}
+                        />
+                        Is friendly?
+                    </label>
+
+                    <br />
+
+                    <label>
+                        <input 
+                            type = "radio"
+                            name="gender"
+                            value = "male"
+                            checked={this.state.gender === "male"}
+                            onChange={this.handleChange}
+                        /> 
+                        male
+                    </label>
+
+                    <br />
+
+                    <label>
+                        <input 
+                            type = "radio"
+                            name="gender"
+                            value = "female"
+                            checked={this.state.gender === "female"}
+                            onChange={this.handleChange}
+                        /> 
+                        female
+                    </label>
+
+                    <br />
+
+                    <label>Favorite color:</label>
+                    <select
+                       value={this.state.favColor} 
+                        onChange={this.handleChange}
+                        name="favColor" >
+
+                        <option value="blue">Blue</option>
+                        <option value="green">Green</option>
+                        <option value="red">Red</option>
+                        <option value="orange">Orange</option>
+                        <option value="yellow">Yellow</option>
+                    </select>
+
+                    <h1>{this.state.firstName} {this.state.lastName}</h1>
+                    <h2>you are a {this.state.gender}</h2>
+                    <h2>your favorite color is {this.state.favColor}</h2>
+                </form>
+           </div>
         )
     }
 }
