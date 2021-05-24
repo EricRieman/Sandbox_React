@@ -1,5 +1,4 @@
 import ReactDOM from "react-dom"
-import {App, App2} from "./App"
+import App from "./App"
 
 ReactDOM.render( <App />, document.getElementById("root") );
-ReactDOM.render( <App2 />, document.getElementById("test1") );
