@@ -1,6 +1,6 @@
 // Objective: render an unordered list <ul> to the page that contains <li> any items 
 
-import react from "react"
+import React from "react"
 import reactDOM from "react-dom"
 
 ReactDOM.render

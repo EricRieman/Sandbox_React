@@ -2,6 +2,7 @@
 // header will only display
 // meme generator will call an api and hold onto data
 
+import React from "react"
 import MemeGenerator from "./MemeGenerator"
 import Header from "./Header"
 
