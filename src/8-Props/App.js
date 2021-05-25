@@ -1,3 +1,4 @@
+import React from "react"
 import {ContactCard, ContactCard2} from "./ContactCard"
 
 function App()

@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React from "react"
 import "./style.css"
 
 function ToDoItem (props) {

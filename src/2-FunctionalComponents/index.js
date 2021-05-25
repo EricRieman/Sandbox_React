@@ -1,6 +1,5 @@
 // WE can create a component by writing a function
-
-import react from "react"
+import React from "react"
 import reactDOM from "react-dom"
 
 // strong react practice to capitalize name of functional compnents

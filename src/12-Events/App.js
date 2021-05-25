@@ -2,6 +2,8 @@
 // html by assingning a function to an "onclick" property. 
 // in jsx, we use to same property, but camel case, "onClick"
 
+import React from "react"
+
 function handleMouseOver() {
     console.log("I am hovering" );
 }

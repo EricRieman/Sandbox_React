@@ -1,3 +1,5 @@
+import React from "react"
+
 function FormComponent(props) {
     return (
         <main>

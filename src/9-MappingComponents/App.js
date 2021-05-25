@@ -2,6 +2,7 @@
 // most data you will end up rendering on a page comes from an http call 
 // that will return some json data to you
 
+import React from "react"
 import {Joke} from "./Joke";
 import {myData} from "./myData";
 

@@ -1,5 +1,5 @@
 // convert the functional compoments into class components
-
+import React from "react"
 import ReactDom from "react-dom"
 import React from "react"
 

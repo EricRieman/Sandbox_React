@@ -1,3 +1,4 @@
+import React from "react"
 import MyFooter from "./MyFooter"
 
 // MyFooter is a child of App, App is a parent of MyFooter

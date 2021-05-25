@@ -3,7 +3,7 @@
 // 2) a paragraph
 // 3) a list of 3 
 // Try to style your code (research)
-
+import React from "react"
 import ReactDOM from "react-dom";
 
 function App()
