@@ -1,3 +1,5 @@
+import React from "react"
+
 export function Conditional(props) {
     return (
         <h1>{props.isLoading ? "Loading" : "Done"} </h1>

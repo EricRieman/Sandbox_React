@@ -1,7 +1,7 @@
 // render joke components.
 // each joke should recive a question and a punchline
 // render them however
-
+import React from "react"
 import {Joke, Joke2} from "./Joke"
 
 function App() {

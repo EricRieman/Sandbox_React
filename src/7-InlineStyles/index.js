@@ -1,7 +1,7 @@
 // Updating text base on time of day, use inline styles with the style property 
 // in JSX, we cannot use the typical inline styling <h1 style = "color: yellow">
 // because the sytle needs to be a js object, and that needs to be wrapped in {}. 
-
+import React from "react"
 import ReactDOM from "react-dom"
 
 function App() {
