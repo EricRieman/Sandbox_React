@@ -13,6 +13,7 @@ class MemeGenerator extends React.Component {
             allMemeImgs: []
         }
         this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     componentDidMount() {
@@ -25,16 +26,25 @@ class MemeGenerator extends React.Component {
             })
     }
 
-    // create the onChange handler here
+    // 6) create the onChange handler here
     handleChange(event) {
         const {name, value} = event.target
         this.setState( {[name]: value} )
+    }
+ 
+    // 7) attach a function to the generate button that
+    // chooses and sows a random meme from allMemeImgs
+    handleSubmit(event) {
+        event.preventDefault() // stops page from refreshing
+        const rand = 10 //Math.floor(Math.random() * this.state.allMemeImgs.length)
+        const img = this.state.allMemeImgs[rand].url
+        this.setState( {randomImg: img} )
     }
 
     render() {
         return (
             <div>
-                <form className= "meme-form">
+                <form className= "meme-form" onSubmit={this.handleSubmit}>
                     {/*5) Create 2 input fields, one for top and bottom text*/}
                     <input 
                         type="text"
