@@ -6,6 +6,13 @@
         "mhutchie.git-graph",
         "donjayamanne.githistory",
         "alefragnani.project-manager",
-        "equimper.react-native-react-redux"
+        "equimper.react-native-react-redux",
+        "formulahendry.auto-rename-tag",
+        "coenraads.bracket-pair-colorizer",
+        "vincaslt.highlight-matching-tag",
+        "oderwat.indent-rainbow",
+        "ritwickdey.liveserver",
+        "silvenon.mdx",
+        "burkeholland.simple-react-snippets"
      ]
 }
