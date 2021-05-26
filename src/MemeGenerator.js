@@ -20,8 +20,9 @@ class MemeGenerator extends React.Component {
         fetch( "https://api.imgflip.com/get_memes" )
             .then( response => response.json())
             .then( response => {
-                const memes = response.data
-                console.log(memes)
+                const {memes} = response.data
+                console.log(memes[0])
+                const temp = memes[0]
                 this.setState({allMemeImgs: memes})
             })
     }
@@ -36,8 +37,9 @@ class MemeGenerator extends React.Component {
     // chooses and sows a random meme from allMemeImgs
     handleSubmit(event) {
         event.preventDefault() // stops page from refreshing
-        const rand = 10 //Math.floor(Math.random() * this.state.allMemeImgs.length)
-        const img = this.state.allMemeImgs[rand].url
+        const data = this.state.allMemeImgs;
+        const rand = Math.floor(Math.random() * data.length)
+        const img = data[rand].url
         this.setState( {randomImg: img} )
     }
 
