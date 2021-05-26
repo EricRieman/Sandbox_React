@@ -17,3 +17,5 @@ const Greatting2 =() => {
 ReactDom.render( <App />, document.getElementById("root") )
 ReactDom.render( <Greating />, document.getElementById("test1") )
 ReactDom.render( <Greating2 />, document.getElementById("test1") )
+
+// 1:18:31
