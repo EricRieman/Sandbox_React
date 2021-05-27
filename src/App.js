@@ -2,36 +2,49 @@ import React from "react"
 
 import "./app.css"
 
-const book1 = {
-    img: "https://images-na.ssl-images-amazon.com/images/I/61pJRtxpm3L._AC_UL210_SR210,210_.jpg",
-    title: "Groundwater Science",
-    author: "Charles R. Fitts"
-}
-
-const book2 = {
-    img: "https://images-na.ssl-images-amazon.com/images/I/51qQ7tba6-L._SX382_BO1,204,203,200_.jpg",
-    title: "Fundamentals of Hydrology",
-    author: "Tim Davie"
-}
-
 function App() {
+    const book1 = {
+        img: "https://images-na.ssl-images-amazon.com/images/I/61pJRtxpm3L._AC_UL210_SR210,210_.jpg",
+        title: "Groundwater Science",
+        author: "Charles R. Fitts"
+    }
+    
+    const book2 = {
+        img: "https://images-na.ssl-images-amazon.com/images/I/51qQ7tba6-L._SX382_BO1,204,203,200_.jpg",
+        title: "Fundamentals of Hydrology",
+        author: "Tim Davie"
+    }
+
     return (
         <div className = "book-list" >
             < Book data={book1} />
             < Book data={book2} />
             < Book data={book1} />
-            < Book data={book1} />
-            < Book data={book1} />
+            < Book data={book2} />
+
+            <Book Book data={book1}> 
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Culpa vitae commodi, eius beatae ut cumque nobis voluptatum 
+                aspernatur dolorem quo molestias eum accusantium corrupti eos 
+                laboriosam. Perspiciatis, ab ut? Fuga.</p>
+            </Book>
         </div>       
     )
 }
 
-const Book = (props) => {
+//instead of using props, we could just list the parameters being passed,
+// removing the need for the props variable
+
+// We can access children elements of the component by passing in the
+// 'children' keyword, as shown below.
+
+const Book = ({data, children}) => {
     return (
     <div className = "book">
-        <Image img = {props.data.img}/>
-        <Title title = {props.data.title} />
-        <Author author = {props.data.author} />
+        <Image img = {data.img}/>
+        <Title title = {data.title} />
+        <Author author = {data.author} />
+        {children}
     </div>
     )
 }
