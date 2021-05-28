@@ -87,9 +87,4 @@ const Button2 = (props) => {
     )
 }
 
-
-
-
 export default App
-
-// 2:21:45
