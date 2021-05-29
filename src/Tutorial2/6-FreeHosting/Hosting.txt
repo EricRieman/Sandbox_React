@@ -1,3 +1,7 @@
 https://app.netlify.com/teams/ericrieman/overview
 
-3:24:24
+use netify to host for free, after logging in, there is an option to drag and drop your code.
+but first, be need to buid production, all of our testing thus far has been on a local npm
+server. We need to build using 'npm run build' which will produce a build folder. just drag
+and drop that folder to netify. Once complete, it will produce a url that can be used to 
+access your site from any browser.
