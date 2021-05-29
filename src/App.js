@@ -1,18 +1,12 @@
-import React from "react"
-
-import "./app.css"
-
-import books from "./Books"
-import Book from "./Book"
+import React from 'react'
+import Setup from './1-error-example';
 
 function App() {
-    const mappedBooks = books.map( (book) => <Book {...book} key={book.id}/> )
-
-    return (
-        <div className = "book-list" >
-            {mappedBooks}
-        </div>       
-    )
+  return (
+    <div className='container'>
+      <Setup />
+    </div>
+  )
 }
 
 export default App

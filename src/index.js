@@ -1,8 +1,11 @@
-import React from "react"
-import ReactDom from "react-dom"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
 
-// Note here that becasue App is a fefault export, we
-// can change the name of the import
-import MySpecificApp from "./App"
-
-ReactDom.render( <MySpecificApp />, document.getElementById("root") )
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
