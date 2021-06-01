@@ -33,3 +33,5 @@ const App = () => {
 }
 
 export default App;
+
+//use state array: 4:07:15
