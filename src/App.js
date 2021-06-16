@@ -11,15 +11,11 @@ const App = () => {
 
   if( isLoading )
     return (
-      <div className ="container">
-        <p>Loading</p>
-      </div>
+      <p>Loading</p>
     )
 
   return (
-    <div className ="container">
-      <p>Not loading</p>
-    </div>
+    <p>Not loading</p>
   )
 }
 

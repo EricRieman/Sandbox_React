@@ -14,6 +14,8 @@ const url = "https://api.github.com/users"
 const App = () => {
   const [users, setUsers] = useState([]);
 
+  //We have to make this a seprate function becasue it is async/await, which returns a promise.
+  //Therefore, we must use a 'normal' arrow function in useEffect, that calls this aync function
   const getUsers = async() => {
     const response = await fetch(url)
     const users = await response.json();
@@ -25,23 +27,23 @@ const App = () => {
   }, [])
 
   return (
-    <div className ="container">
-        <h3>Github Users</h3>
-        <ul className = "users">
-        {
-          users.map( (user) => {
-            const {id, login, avatar_url, html_url} = user
-            return  <li key = {id}>
-              <img src={avatar_url} alt={login} />
-              <div>
-                <h4>{login}</h4>
-                <a href = {html_url}>Profile</a>
-              </div>
-            </li>
-          })
-        }
-        </ul>
-    </div>
+    <>
+      <h3>Github Users</h3>
+      <ul className = "users">
+      {
+        users.map( (user) => {
+          const {id, login, avatar_url, html_url} = user
+          return  <li key = {id}>
+            <img src={avatar_url} alt={login} />
+            <div>
+              <h4>{login}</h4>
+              <a href = {html_url}>Profile</a>
+            </div>
+          </li>
+        })
+      }
+      </ul>
+    </>
   )
 }
 
