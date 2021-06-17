@@ -22,10 +22,10 @@ const App = () => {
   })
 
   return (
-    <div className ="container">
+    <>
       <h1>Window</h1>
       <h2>{size} PX</h2>
-    </div>
+    </>
   )
 }
 

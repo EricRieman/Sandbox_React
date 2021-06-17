@@ -25,7 +25,7 @@ const App = () => {
   } 
 
   return (
-    <div className='container'>
+    <>
       <section style ={{margin:'4rem 0'}} >
         <h2>regular counter</h2>
         <h1>{value}</h1>
@@ -34,7 +34,7 @@ const App = () => {
         <button className='btn' onClick={() => setValue( 0 )}>Reset</button>
         <button className='btn' onClick={onIncreaseLater}>Increase later</button>
       </section>
-    </div>
+    </>
   )
 }
 

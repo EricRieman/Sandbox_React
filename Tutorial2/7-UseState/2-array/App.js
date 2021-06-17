@@ -15,7 +15,7 @@ const App = () => {
       const {id, name} = person
 
       return (
-        <div key={id} className="item">
+        <div key={id}>
           <h4>{name}</h4>
             {/*Here, we create a button handler and pass in the id to edit the people array
               remember to use an arrow function here, else the function get invoked on creation*/ }

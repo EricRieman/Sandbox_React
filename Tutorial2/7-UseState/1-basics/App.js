@@ -21,14 +21,14 @@ const App = () => {
   }
 
   return (
-    <div className='container'>
+    <>
       <React.Fragment>
         <h1>{text}</h1>
         <button className="btn" onClick={handleClick}>
           Change Title
         </button>
       </React.Fragment>
-    </div>
+    </>
   )
 }
 
