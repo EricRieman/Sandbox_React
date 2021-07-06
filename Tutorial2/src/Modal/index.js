@@ -22,7 +22,7 @@ const Index = () => {
       setPeople([...people, {id: new Date().getTime().toString(), name}])
       setName('')
     } else {
-      showModal(true)
+      setShowModal(true)
     }
   }
 
