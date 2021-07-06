@@ -8,9 +8,13 @@ const App = () => {
   const [loading, setLoading] = useState( true )
   const [tours, setTours] = useState([])
 
+  const removeTour = (id) => {
+    const newTours = tours.filter((tour) => tour.id !== id)
+    setTours(newTours)
+  }
+
   const fetchTours = async () => {
     setLoading(true)
-
     try {
       const response = await fetch( url)
       const tours = await response.json()
@@ -28,7 +32,7 @@ const App = () => {
     fetchTours()
   }, [] )
 
-  return ( <main> {loading ? < Loading /> : <Tours tours = {tours}/>} </main>)
+  return ( <main> {loading ? < Loading /> : <Tours tours={tours} removeTour={removeTour}/>} </main>)
 }
 
 export default App
