@@ -3,11 +3,13 @@
 // a team of people are working on the same code
 
 import React, {} from 'react';
+import Index from './Modal';
 
 const App = () => {
 
   return (
     <>
+      <Index />
     </>
   )
 }
