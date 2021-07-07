@@ -51,7 +51,4 @@ const App = () => {
   return ( <main> {loading ? < Loading /> : <Tours tours={tours} removeTour={removeTour}/>} </main>)
 }
 
-
-//48:00
-
 export default App
