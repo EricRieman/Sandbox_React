@@ -4,12 +4,13 @@ import Categories from './Categories';
 import items from './data';
 
 const App = () => {
-  const [mentItems, setMenuItems] = useState(items)
-  const [categorites, setCategories] = useState(['lunch'])
-  const [categoryIndex, setCategoryIndex]= useState(0)
+const allCategories = new Set( items.map(item => item.category) )// map all categories, then use a Set to filter for uniqueness
 
-  const selectedMenu = mentItems.filter( (item) => {
-    return item.category === categorites[categoryIndex]
+const categories = ['all', ...allCategories ]
+const [categoryIndex, setCategoryIndex]= useState(0)
+
+  const selectedMenu = items.filter( (item) => {
+    return categoryIndex === 0 || item.category === categories[categoryIndex]
   })
 
   return (
@@ -19,7 +20,8 @@ const App = () => {
           <h2>our menu</h2>
           <div className='underline'/>
           <Categories 
-            categorites={categorites}
+            categories={categories}
+            index={categoryIndex}
             setCategoryIndex={setCategoryIndex}
           />
           <Menu items={selectedMenu} />
