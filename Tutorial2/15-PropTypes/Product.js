@@ -14,7 +14,7 @@ const Product = ({name, image, price}) => {
 
       {/*Using short circuit operator */}
       <h4>{name}</h4>
-      <img src={image && image.url || defaultImage} alt={name} /> {/*Check if image in undefined before accessing the url*/}
+      <img src={image && image.url || defaultImage} alt={name} /> {/*Check if image is undefined before accessing the url*/}
       <p>${price || 3.99}</p> {/*If price is undefined, the or operator can be used to resturn 3.99 (a default value) instead*/}
     </article>
   )
