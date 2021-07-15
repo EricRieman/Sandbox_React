@@ -16,11 +16,10 @@
 // wrap all our routes in a Switch component, which ensures on the first match gets 
 // dispayed. This means if none of the other routes match, only then the error is displayed.
 
-//9:20
+//9:30
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
-//pages
 import Home from './pages/Home'
 import About from './pages/About'
 import People from './pages/People'
@@ -30,26 +29,30 @@ import Person from './pages/Person'
 import Navbar from './components/Navbar'
 
 const App = () => {
-  return <Router>
-    <Navbar />
-    <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
+  return (
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
 
-      <Route path="/about">
-        <About /> 
-      </Route>
+        <Route path="/about">
+          <About /> 
+        </Route>
 
-      <Route path="/people">
-        <People />
-      </Route>
+        <Route path="/people">
+          <People />
+        </Route>
 
-      <Route path="*">
-        <Error />
-      </Route>
-    </Switch>
-  </Router>
+        <Route path='/person/:id' children={<Person/>}></Route>
+
+        <Route path="*">
+          <Error />
+        </Route>
+      </Switch>
+    </Router>
+  )
 }
 
 export default App
