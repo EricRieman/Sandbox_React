@@ -3,10 +3,12 @@ import SingleColor from './SingleColor'
 
 import Values from 'values.js'
 
+//3:50
+
 function App() {
 const [color, setColor] = useState('')
 const [error, setError] = useState(false)
-const [list, setList] = useState([])
+const [list, setList] = useState(new Values('#f15025').all(10))
 
 const handleSubmit = (e) => {
   e.preventDefault()
