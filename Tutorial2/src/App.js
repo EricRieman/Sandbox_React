@@ -16,7 +16,10 @@
 // wrap all our routes in a Switch component, which ensures on the first match gets 
 // dispayed. This means if none of the other routes match, only then the error is displayed.
 
-//9:30
+// URL params and placeholders can be used to route to the same page, but display differnt
+// data. For example, each user could have their own page, but we dont want to make a page
+// for each user, instead we make on 'template' page, and pass in the desired params
+// through the url (see Person component as example)
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
@@ -45,7 +48,7 @@ const App = () => {
           <People />
         </Route>
 
-        <Route path='/person/:id' children={<Person/>}></Route>
+        <Route path='/person/:id' children={<Person/>}></Route> 
 
         <Route path="*">
           <Error />
