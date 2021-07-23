@@ -18,8 +18,11 @@
 
 // URL params and placeholders can be used to route to the same page, but display differnt
 // data. For example, each user could have their own page, but we dont want to make a page
-// for each user, instead we make on 'template' page, and pass in the desired params
-// through the url (see Person component as example)
+// for each user, instead we make a 'template' page, and pass in the desired params
+// through the url (see Person component as example). A decent tip is to pass in just
+// an id thourgh the url param, then use that to fetch specific user data on that page.
+// However, in this exaple, data is local, so no need to fetch. In order to access the url
+// param in the placeholder component, we need to the useParams hook.
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
@@ -48,6 +51,8 @@ const App = () => {
           <People />
         </Route>
 
+        {/*the /:id is known as a url parameter, the Person componenet is the placeholder.
+        Inside Person, we use the id to generate the page*/}
         <Route path='/person/:id' children={<Person/>}></Route> 
 
         <Route path="*">
