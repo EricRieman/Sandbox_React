@@ -30,3 +30,14 @@ This will create a starting template with the following folders:
 - styles, for our style code
 
 Unlike a 'regualar' react app, there is no index.html in the public folder. Instead, nextjs generates that for us, using the appropiate server side rendering. 
+
+Remove the following files/folders:
+- /pages/api
+- index.js (or just delete content)
+- styles/Home.module.css
+
+## What our app will do
+- 3 simple pages
+  - Starting page
+  - news page
+  - news details page
