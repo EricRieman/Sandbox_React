@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {data} from '../data'
-import {link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 const People = () => {
   const [people, setPeople] = useState(data)
@@ -12,6 +12,7 @@ const People = () => {
         return (
           <div key={person.id} className='item'>
             <h4>{person.name}</h4>
+            {/*The path here must match what is defined in the Router*/}
             <Link to={`/person/${person.id}`}>Learn more</Link>
           </div>
         )
