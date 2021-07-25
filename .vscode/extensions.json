@@ -1,18 +1,19 @@
 {
-    "recommendations": [ 
-        "msjsdiag.debugger-for-chrome",
-        "dsznajder.es7-react-js-snippets", 
-        "jpoissonnier.vscode-styled-components",
-        "mhutchie.git-graph",
-        "donjayamanne.githistory",
-        "alefragnani.project-manager",
-        "equimper.react-native-react-redux",
-        "formulahendry.auto-rename-tag",
-        "coenraads.bracket-pair-colorizer",
-        "vincaslt.highlight-matching-tag",
-        "oderwat.indent-rainbow",
-        "ritwickdey.liveserver",
-        "silvenon.mdx",
-        "burkeholland.simple-react-snippets"
+    "recommendations": [
+      "msjsdiag.debugger-for-chrome",
+      "dsznajder.es7-react-js-snippets",
+      "jpoissonnier.vscode-styled-components",
+      "mhutchie.git-graph",
+      "donjayamanne.githistory",
+      "alefragnani.project-manager",
+      "equimper.react-native-react-redux",
+      "formulahendry.auto-rename-tag",
+      "coenraads.bracket-pair-colorizer",
+      "vincaslt.highlight-matching-tag",
+      "oderwat.indent-rainbow",
+      "ritwickdey.liveserver",
+      "silvenon.mdx",
+      "burkeholland.simple-react-snippets",
+      "dannyconnell.split-html-attributes"
     ]
 }
