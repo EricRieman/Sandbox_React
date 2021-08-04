@@ -88,3 +88,6 @@ const NewsPage = () => {
 In the example, we define a Layout component that can used to wrap every page with the same navigation bar. This is a common practice, but can be cumbersome if your app has many pages. This is why next provide an _app.js file, which should be created by default when creating a nextjs app. Defined in this file is the root component. It has 2 props, the component and pageProps, which is just the main component react will render, and its props. This is the component that gets rendered for every page.
 
 In this example we can wrap the MyApp component in the Layout component to ensure every page has the same navigation bar. Hence, we only need wrap this lyout once, instead of wrapping each page.
+
+*bookmark* 
+Programmatic Navigation 01:13:04
