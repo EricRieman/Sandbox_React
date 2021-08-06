@@ -10,10 +10,16 @@ const Navbar = () => {
   const linksContainerRef = useRef(null)
   const linksRef = useRef(null)
 
+  // the logic in this hook ensures the heght of the links container
+  // is the same height as all the links, so it dynamically changes
+  // if more links are added/removed.
   useEffect(() => {
-    const linksHeight = linksRef.current.getBoundingClientRect
+    const linksHeight = linksRef.current.getBoundingClientRect().height
 
-    //5:10
+    if( showLinks )
+      linksContainerRef.current.style.height = `${linksHeight}px`
+    else
+      linksContainerRef.current.style.height = '0px'
 
   }, [showLinks])
  
@@ -27,7 +33,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        <div className={'links-container'} ref={linksContainerRef} >
+        <div className='links-container' ref={linksContainerRef} >
           <ul className='links' ref={linksRef}>
             {links.map((link)=>{
               return <li key={link.id}><Link to={link.url}>{link.text}</Link></li>
