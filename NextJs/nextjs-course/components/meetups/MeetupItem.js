@@ -7,7 +7,7 @@ function MeetupItem({id, image, title, address}) {
   const router = useRouter()
 
   const showDetailsHandler = () => {
-    //We could also define an anchor or <Link>, but with the router object, we
+    // We could also define an anchor or <Link>, but with the router object, we
     // can also use this push method, which is convenient for button handlers.
     router.push('/' + id)
   }

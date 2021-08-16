@@ -1,7 +1,6 @@
-// https://www.youtube.com/watch?v=MFuwkrseXVE&ab_channel=Academind
-import MeetupList from '../components/meetups/MeetupList'
 
-//1:06 - The "_app.js" File & Wrapper Components
+//import {useEffect, useState} from 'react'
+import MeetupList from '../components/meetups/MeetupList'
 
 const MEETUPS = [
   {
@@ -20,8 +19,26 @@ const MEETUPS = [
   }
 ]
 
-const HomePage = () => {
-  return <MeetupList meetups={MEETUPS} />
+const HomePage = (props) => {
+  // WE NO LONGER NEED TO MANAGE STATE OR EFFECT TO FETCH DATA!
+  //    it is being done in getStaticProps, see ReadMe fro deails.
+  //const [loadedMeetups, setLoadedMeetups] = useState([])
+
+  //useEffect(() => {
+  //  // send http request and fetch data
+  //  setLoadedMeetups(MEETUPS)
+  //}, [])
+
+  //return <MeetupList meetups={loadedMeetups} />
+
+  return <MeetupList meetups={props.meetups} />
+}
+
+export async function getStaticProps() {
+  // fetch data afrom an API
+  // read files from the system
+
+  return {props: {meetups: MEETUPS}}
 }
 
 export default HomePage
