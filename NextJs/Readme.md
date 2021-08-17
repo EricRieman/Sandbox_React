@@ -99,11 +99,15 @@ NextJs provides two forms of pre-rendering, which will run code at different tim
 
   This function can also execute code that would normally just run on a server, like accessing files or securly connect to a database, because any code inside of it will never end up on, or execute on the client side. Simply becaue this code is executed during the build process, not on the server and especially not on the client. 
 
-  You must always return an object from getStaticProps. Insude the object, we can configure various things, but most impotantly, we need to set a props object as a property. That props object is whats recieved inside the page component function. 
+  You must always return an object from getStaticProps. Inside the object, we can configure various things, but most impotantly, we need to set a props object as a property. That props object is whats recieved inside the page component function. 
 
-  bookmark: More Static Site Generation (SSG) With getStaticProps 01:41:39
+  Problem: the page is rendered during build, and that data could become outdated. In our example, perhaps new meetups are added or removed from the database. We could always re-build and re-deply when our data changes, which is fine for profile pages becasue data does not change frequently. If data does change frequently, there is another property we can add to the retured props object, called revalidate. This unlocks a feature called incremental static generation. That property gets set to an integer, which is the number of seconds nextjs will wait until it re-generates this page for an incoming request. So, if it is set to 10, it gets generated during the build process, and at least every 10 seconds for every request. This way, we can ensure our data is never older then 10 seconds.
 
 - Server-side rendering
+
+  Sometimes, a re-validate is not enough, and you want to re-generate this page for every incoming request. You want to pre-generate the page dynamically, on the fly, after deployment, on the sever. Not during the build process and not every few seconds, but for every request. 
+
+  To do this, we create a function spcific to nextjs called getServerSideProps. This would be used instead of getStaticProps, but it isnt used as often. This function is not run during the build process, but instead always on the server after deployment. Being server side, it gives us access to server-side code and perform operations that require credentials. This function will als return an object with a props property.
 
 ## Good practice tips
 - Keep page components lean by simply returning a component that hold contains all the content and styling.
