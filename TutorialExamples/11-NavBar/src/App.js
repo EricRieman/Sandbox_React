@@ -2,7 +2,7 @@ import React from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import Navbar from './Navbar'
-import SideBar from './SideBar'
+//import SideBar from './SideBar'
 
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
@@ -15,7 +15,8 @@ function App() {
   return (
     <Router>
       <Navbar/>
-      {/*<SideBar/> FOR TUTORIAL ONLY*/}
+      {/*<SideBar/> FOR TUTORIAL ONLY, to show that 
+        components placed here show up on all pages*/}
 
       <Switch>
         <Route exact path="/">
