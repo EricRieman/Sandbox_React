@@ -87,13 +87,14 @@ const NewsPage = () => {
 ## Wrapping components
 In the example, we define a Layout component that can used to wrap every page with the same navigation bar. This is a common practice, but can be cumbersome if your app has many pages. This is why next provide an _app.js file, which should be created by default when creating a nextjs app. Defined in this file is the root component. It has 2 props, the component and pageProps, which is just the main component react will render, and its props. This is the component that gets rendered for every page.
 
-In this example we can wrap the MyApp component in the Layout component to ensure every page has the same navigation bar. Hence, we only need wrap this lyout once, instead of wrapping each page.
+In this example we can wrap the MyApp component in the Layout component to ensure every page has the same navigation bar. Hence, we only need wrap this layout once, instead of wrapping each page.
 
 ## NextJs pre-render and SEO
 NextJs will output the inital render for the search engine crawler. This conflicts with how react pages that fetch it's main content data, because that is generaly done inside a useEffect, which does not return its data untill the second trigger.
 
 NextJs provides two forms of pre-rendering, which will run code at different times.
-- Static generation, page component is rendered when you build your app for production (npm run build). The page is not pre-rendered on the fly, when a request reaches the server, but instead its is rendered by the developer, when you build the site for production. This means after deployment, the pre-rendered page does not change, by default. If you want the pre-render to change, you need to re-build and re-deploy your code. This is generally the way you want, becasue pages themselves dont change, the content does, and the content comes from an API.
+- Static generation
+  Page component is rendered when you build your app for production (npm run build). The page is not pre-rendered on the fly, when a request reaches the server, but instead its is rendered by the developer, when you build the site for production. This means after deployment, the pre-rendered page does not change, by default. If you want the pre-render to change, you need to re-build and re-deploy your code. This is generally the way you want, becasue pages themselves dont change, the content does, and the content comes from an API.
 
   By default, NextJs prepares and generates your pages statically duing the build process. But, if you need to wait for data, you can do that by exporting a spectial function that can only be done by components inside your pages folder. The function must be named, getStaticProps(), see /pages/index.js for example. This tells NextJs to call this function duing the build stage pre-render. It can also be async, so it can return a promise, which NextJs will wait for and is typically where you fetch data.
 
@@ -107,7 +108,16 @@ NextJs provides two forms of pre-rendering, which will run code at different tim
 
   Sometimes, a re-validate is not enough, and you want to re-generate this page for every incoming request. You want to pre-generate the page dynamically, on the fly, after deployment, on the sever. Not during the build process and not every few seconds, but for every request. 
 
-  To do this, we create a function spcific to nextjs called getServerSideProps. This would be used instead of getStaticProps, but it isnt used as often. This function is not run during the build process, but instead always on the server after deployment. Being server side, it gives us access to server-side code and perform operations that require credentials. This function will als return an object with a props property.
+  To do this, we create a function spcific to nextjs called getServerSideProps. This would be used instead of getStaticProps, but it isnt used as often. This function is not run during the build process, but instead always on the server after deployment. Being server side, it gives us access to server-side code and perform operations that require credentials. This function will always return an object with a props property, and with it, porperties to hold the data.
+
+  A parameter called context is passed into this function, which gives us access to a number of things, including the request (req) and response (res). This is similar to how nodejs and express handles middleware on the server side, and can be used with authentication.
+
+In our example, and in most practices, it is better to use static generation (getServerSideProps) if data doesnt change multiple times a second, or you dont need access to the request object (ex: authentication). This is becasue the data fetched is all pre-rendered at build time for SEO, which is faster then pre-generating for every request.
+
+These can be applied to any nextjs page. In our example, we dont need anything for the new-meetup page becasue it is just a form that doesnt require any data. However, the [meetupID] page (aka MeetupDetails) does have data, but it can only be accessed with an ID. We could access that ID with the useRouter hook, but we cant use that inside the getStaticProps function. Instead, we use the context parameter passed in, context.params.meetupId (see [meetupId] for example).
+
+To do this, we need to define another nextjs function called getStaticPaths, which is nessesary for any dynamic page that uses getStaticProps.
+
 
 ## Good practice tips
 - Keep page components lean by simply returning a component that hold contains all the content and styling.
