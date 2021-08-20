@@ -6,7 +6,21 @@ const MeetupDetails = (props) => {
 }
 
 export async const getStaticPaths = () => {
-  //1:59:23
+  return {
+    fallback: false,
+    paths: [
+      {
+        params: {
+          meetupId: 'm1',
+        }
+      },
+      {
+        params: {
+          meetupId: 'm2',
+        }
+      }
+    ]
+  }
 }
 
 export async const getStaticProps = () => {

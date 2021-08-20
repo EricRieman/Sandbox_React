@@ -116,7 +116,13 @@ In our example, and in most practices, it is better to use static generation (ge
 
 These can be applied to any nextjs page. In our example, we dont need anything for the new-meetup page becasue it is just a form that doesnt require any data. However, the [meetupID] page (aka MeetupDetails) does have data, but it can only be accessed with an ID. We could access that ID with the useRouter hook, but we cant use that inside the getStaticProps function. Instead, we use the context parameter passed in, context.params.meetupId (see [meetupId] for example).
 
-To do this, we need to define another nextjs function called getStaticPaths, which is nessesary for any dynamic page that uses getStaticProps.
+To do this, we need to define another nextjs function called getStaticPaths, which is nessesary for any dynamic page that uses getStaticProps. Remember, a page with getStaticProps gets pre-generated during the build, which means it needs to generate ALL versions of the dynamic page, for every ID. In the getStaticPaths function, we return an object that describes all the dynamic segment values. The object has a paths key which is an array of objects, one for each version of the page. This object has a params key, which is an object with all the key/value pairs that might lead to your dynamic page. See [meetupId] for an example. Typically, you dont hard code these values, but fetch them from a database. 
+
+Along with the params key, we also need to include a fallback key, which tells nextjs that we will provide either some or all of the versions of this page. False means it will support all values, true means it will only provide some.
+
+## API routs
+
+2:06:50
 
 
 ## Good practice tips
