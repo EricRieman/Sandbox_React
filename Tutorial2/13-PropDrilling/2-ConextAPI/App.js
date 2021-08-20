@@ -50,6 +50,4 @@ const Person = ({id, name}) => {
   )
 }
 
-//8:08
-
 export default App;
