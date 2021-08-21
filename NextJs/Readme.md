@@ -121,8 +121,11 @@ To do this, we need to define another nextjs function called getStaticPaths, whi
 Along with the params key, we also need to include a fallback key, which tells nextjs that we will provide either some or all of the versions of this page. False means it will support all values, true means it will only provide some.
 
 ## API routs
+NextJs provides us a way to create a backend API together with our React front end, in the same project, called API routes. They are special routes (or pages) that dont return HTML code, but are about accepting incoming HTTP requests, also PUT, POST, PATCH, DELETE, ect requests, with json data. Then write, modidify or return json data to/from a database. API routes allow you to write your own API endpoints as part of the NextJs project, then then served on the same servere that hosts your nextjs app.
 
-2:06:50
+To add API routes, we create a special folder in the pages folder called api. NextJS will pick up any js files stored in there, and turn those files into API routes. In the api folder, we can add js files, and their names will correspond to paths segments in the url. The functions defined in these files are NOT react componenets, they are server-side code that execute on requests to the route.
+
+Typically, the function is called 'handler' but you can name it whatever you want, as long as its exported. The function takes a reqest and response object, similar to NodeJs and express. The request object takes data about the incoming request, the response is responsible for sending back a response. For the request, we can get things like header, body, and method. 
 
 
 ## Good practice tips
