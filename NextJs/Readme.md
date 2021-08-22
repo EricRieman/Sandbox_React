@@ -127,6 +127,28 @@ To add API routes, we create a special folder in the pages folder called api. Ne
 
 Typically, the function is called 'handler' but you can name it whatever you want, as long as its exported. The function takes a reqest and response object, similar to NodeJs and express. The request object takes data about the incoming request, the response is responsible for sending back a response. For the request, we can get things like header, body, and method. 
 
+In this example, we will connect to a mongoDB database. To do this, we can sign up for a free account on [mongoDb clound](https://www.mongodb.com/cloud). Then we create a free cluster, add our local IP and then add a user with read/write permissions. We can now write code in our api route that send querries to our mongoDB cluster by installing the mongoDB package.
+
+```bash
+  npm install mongodb
+```
+
+From mongodb, we import the MongoClient, an object that allows us to connect to the database. On the mongoDB cloud portal, copy the connection string and pass that in as a parameter to the MongoClient's connect method (see api/new-meetup.js). Change the `<password>` part of the string to the password of the user you created, make sure the user name natches, and rename the myFirstDatabase to the name you want your database to be. If it does not exist, like our case the first time this code runs, mongodb will create it on the fly, otherwise it accesses the database. NEVER run this code on the client side, as it will expose your credentials. 
+
+Connect returns a promise, so make sure your function is async, so you can use await when connectiing. When it finnaly connects and returns a client object. Ob that object, we can access the db property to access the database we connected to. Then on the db object, we can access the meetups collection using the collection property. MongoDb is no-SQL, which is a collection of documents, where a collection is like an SQL table and the documents are like the entries in that table.
+
+The collection property takes a name for the collection, if it does not exist, it will be created on the fly. The collection can be the same name as the database or any name of your choice.
+
+On that collection object, we can call the insertOne method, which is a built in querry method to insert one document into the collection. A document is just a js object (JSON). IN our example, we would include an object with title, image, address and description. This method returns a promise so we can use await and eventually, it wil get a result. Now that we have the result, we want to call client.close() to close the database connection.
+
+Now, we need to send back a response by using the passed in res object. This works similar to express, res has a status method that will send an http status response, like 201, which indicates a successful insert. Then we can chain on a json call to prepare the json data that will be addes to the outgoing respose. Here, we can add a message key and assign it a sting like 'Meetup inserted'.
+
+We can now send a request to this api route from the front end, when the add meetup form is submitted. Sending a request to this api route works like any other backend, using the native fetch function, or by some third-party tool like axios. This would generally require an external url, with domain(.com)/path. But in our case, since this is being ran locally, we can use an internal absolute path. See new-meetup/index.js for example. The path must always match the folder name(s) and file name. The fetch also take an object that configures the request, that contains proerties like method, body, and headers.
+
+In our example, the method property is assigned to POST because that is what we configured the backend to look for. The body holds the data which is the backend will insert, but make sure we pass it through a JSON.stringify call. The headers is assigned a 'Content-Type' property, set to application/json to make it clear we are sending json data. We can now use response from the fetch by awaiting for its json data. In the case of a post, we dont care about the response data, so we can just console log it.
+
+
+
 
 ## Good practice tips
 - Keep page components lean by simply returning a component that hold contains all the content and styling.
