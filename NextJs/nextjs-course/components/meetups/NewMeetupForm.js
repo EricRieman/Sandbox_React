@@ -9,8 +9,8 @@ function NewMeetupForm({onAddMeetup}) {
   const addressInputRef = useRef();
   const descriptionInputRef = useRef();
 
-  function submitHandler(event) {
-    event.preventDefault();
+  function submitHandler(e) {
+    e.preventDefault();
 
     const enteredTitle = titleInputRef.current.value;
     const enteredImage = imageInputRef.current.value;
